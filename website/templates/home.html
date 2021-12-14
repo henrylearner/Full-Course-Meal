@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+    a {font-size: x-large}
+    a {font-weight: normal}
+    a.one{font-size: medium}
+    a.one{font-weight: bold}
+    p {font-size: small}
+    p.main {font-weight: bold}
+    p.main {font-size: large}
+</style>
+
+<form method="POST">
+    <br>
+    <h1 align="center">Full-Course Meal</h1>
+    <br>
+    <div class="form-group">
+        <label for="food">What Food Would You Like to Search?</label>
+        <input type="text" class="form-control" id="food" name="food" placeholder="Try Searching for an Item"
+        />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<br>
+<p class="main">Welcome to Full-Course Meal! Here you can type in a food item (chicken, salmon, tomato etc.) to
+        search for recipes containing that item and beers from
+        <a href="https://www.brewdog.com/usa/" class="one" target="_blank">BrewDog Brewery</a> that complement those
+    recipes. <br> </p>
+<p>***The free version of the API used to return the recipes has a limited amount of calls per day, so the
+    amount of recipes you receive might be limited, but your searches for beer will be unlimited!</p>
+<br><br>
+<h3 align="left">{{food_tag}}</h3>
+{% for food in food_results %}
+<h4 align="left">- <a href={{food[1]}} target="_blank">{{food[0]}}</a></h4>
+{% endfor %}
+<br><br>
+<h3 align="left">{{beer_tag}}</h3>
+{% for beer in beer_results %}
+<h4 align="left" style="font-weight:normal">{{beer}}</h4>
+{% endfor %}
+<br>
+
+{% endblock %}
